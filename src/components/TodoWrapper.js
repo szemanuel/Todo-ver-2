@@ -17,16 +17,28 @@ const TodoWrapper = () => {
     console.log(todos);
   };
 
+  const toggleComplete = (id) => {
+    //mapeamos a través de los todos, si el id es igual al que le pasamos, tomamos una copia de ese Todo
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  //hace un filtro que toma todo lo que no sea igual al id que recibe.
+  const deleteTodo = id => {setTodos(todos.filter(todo => todo.id !==id))}
+
   return (
     <div>
       <h1> Tareas a realizar </h1>
       <TodoForm addTodo={addTodo} />
       {/* Ahora necesitamos generar un Todo para cada valor del state. Para eso tenemos que usar un map*/}
       {todos.map((todo, index) => (
-        <Todo task={todo} key={index} toggleComplete={toggleComplete} />
+        <Todo task={todo} key={index} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
       ))}
     </div>
-  );
+  );    
 };
 
 export { TodoWrapper };
