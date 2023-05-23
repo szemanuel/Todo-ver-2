@@ -42,6 +42,15 @@ const TodoWrapper = () => {
       )
     );
   };
+
+  const editTask = (task, id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, task, idEditing: !todo.isEditing } : todo
+      )
+    );
+  };
+
   return (
     <div>
       <h1> Tareas a realizar </h1>
