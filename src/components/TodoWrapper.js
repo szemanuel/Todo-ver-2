@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TodoForm } from './TodoForm';
 import { Todo } from './Todo';
+import { EditTodoForm } from './EditTodoForm';
+
 import { v4 as uuidv4 } from 'uuid';
 uuidv4();
 
@@ -27,18 +29,39 @@ const TodoWrapper = () => {
   };
 
   //hace un filtro que toma todo lo que no sea igual al id que recibe.
-  const deleteTodo = id => {setTodos(todos.filter(todo => todo.id !==id))}
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
+  const editTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id
+          ? { ...todo, isEditing: !todo.isEditing, isEditing }
+          : todo
+      )
+    );
+  };
   return (
     <div>
       <h1> Tareas a realizar </h1>
       <TodoForm addTodo={addTodo} />
       {/* Ahora necesitamos generar un Todo para cada valor del state. Para eso tenemos que usar un map*/}
-      {todos.map((todo, index) => (
-        <Todo task={todo} key={index} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
-      ))}
+      {todos.map((todo, index) =>
+        todo.isEditing ? (
+          <EditTodoForm editTodo={editTask} task={todo} />
+        ) : (
+          <Todo
+            task={todo}
+            key={index}
+            toggleComplete={toggleComplete}
+            deleteTodo={deleteTodo}
+            editTodo={editTodo}
+          />
+        )
+      )}
     </div>
-  );    
+  );
 };
 
 export { TodoWrapper };
