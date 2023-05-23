@@ -1,11 +1,12 @@
 import React from "react";
 import "./style.css";
+import { TodoWrapper } from "./components/TodoWrapper"
 
 export default function App() {
+  console.log(TodoWrapper)
   return (
     <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+      <TodoWrapper />
     </div>
   );
 }
