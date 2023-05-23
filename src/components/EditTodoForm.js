@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 //Con la prop addTodo logramos que la tarea pase del TodoForm al TodoWrapper
 
 const EditTodoForm = ({ editTodo, task }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(task.task);
 
   //Necesitamos un evento que capture el estado cuando hacemos submit del form. En form creamos el onSubmit={handleSubmit}
   const handleSubmit = (e) => {
