@@ -1,9 +1,8 @@
-import React  from 'react';
+import React from 'react';
+import { TodoForm } from './TodoForm';
 
 const TodoWrapper = () => {
-  return(
-    <h1 className=""> TodoWrapper </h1>
-  )
-}
+  return <TodoForm />;
+};
 
-export { TodoWrapper }
+export { TodoWrapper };
