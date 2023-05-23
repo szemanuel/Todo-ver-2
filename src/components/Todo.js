@@ -5,10 +5,10 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Todo = () => {
+const Todo = ({task, toggleComplete}) => {
   return(
   <div>
-    <p> Go to school </p>
+     <p onClick={() => toggleComplete(task.id)}> {task.task} </p>
     <div>
       <FontAwesomeIcon icon={faPenToSquare} />
       <FontAwesomeIcon icon={faTrash} />
