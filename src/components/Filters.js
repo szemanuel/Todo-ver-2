@@ -1,16 +1,16 @@
 import React from 'react';
 
-const Filters = ({filterActive , task}) => {
+const Filters = ({setCurrentFilter}) => {
 
   return (
-    <div>
-      <button  value="All" onClick={() => filterActive()} className="">
+    <div style={{ marginTop: 20 }}>
+      <button  value="All" onClick={() => setCurrentFilter()} className="">
         All
       </button>
-      <button  value="Active" onClick={() => {}} className="">
+      <button  value="Active" onClick={() => setCurrentFilter("isActive") } className="">
         Active
       </button>
-      <button  value="Completed" onClick={() => {}} className="">
+      <button  value="Completed" onClick={() => setCurrentFilter("completed") } className="">
         Completed
       </button>
     </div>

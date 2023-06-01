@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { TodoForm } from './TodoForm';
 import { Todo } from './Todo';
 import { EditTodoForm } from './EditTodoForm';
@@ -9,6 +9,7 @@ uuidv4();
 
 const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState();
 
   //Cómo pasamos el valor del TodoForm al TodoWrapper? Con las props. En el componente TodoForm agregamos una prop denominada addTodo
 
@@ -32,7 +33,7 @@ const TodoWrapper = () => {
     //mapeamos a través de los todos, si el id es igual al que le pasamos, tomamos una copia de ese Todo
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        todo.id === id ? { ...todo, completed: !todo.completed, isActive: !todo.isActive } : todo
       )
     );
   };
@@ -50,12 +51,6 @@ const TodoWrapper = () => {
     );
   };
 
-  //Filtro de activos: h
-  const filterActive = (todos) => {
-    console.log(todos)
-    todos.filter((todo) => todo.isActive === true)
-  };
-
   const editTask = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -64,12 +59,14 @@ const TodoWrapper = () => {
     );
   };
 
+  const filteredTodos = useMemo(() => currentFilter ? todos.filter( filter => filter[currentFilter]) : todos, [todos, currentFilter])
+
   return (
-    <div>
+    <div style={{ marginLeft: 30 }}>
       <h1> Tareas a realizar </h1>
       <TodoForm addTodo={addTodo} />
       {/* Ahora necesitamos generar un Todo para cada valor del state. Para eso tenemos que usar un map*/}
-      {todos.map((todo, index) =>
+      {filteredTodos.map((todo, index) =>
         todo.isEditing ? (
           <EditTodoForm editTodo={editTask} task={todo} />
         ) : (
@@ -82,7 +79,7 @@ const TodoWrapper = () => {
           />
         )
       )}
-      <Filters filterActive={filterActive}  />
+      <Filters setCurrentFilter={setCurrentFilter}  />
     </div>
   );
 };
