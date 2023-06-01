@@ -53,7 +53,7 @@ const TodoWrapper = () => {
   //Filtro de activos: h
   const filterActive = (todos) => {
     console.log(todos)
-    setTodos(todos.filter((todo) => todo.isActive === true));
+    todos.filter((todo) => todo.isActive === true)
   };
 
   const editTask = (id) => {
