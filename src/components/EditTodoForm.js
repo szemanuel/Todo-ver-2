@@ -23,7 +23,7 @@ const EditTodoForm = ({ editTodo, task }) => {
         value={value}
       />
       <button type="submit" className="">
-        Agregar Tarea
+        Editar Tarea
       </button>
     </form>
   );
