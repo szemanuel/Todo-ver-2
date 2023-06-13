@@ -31,6 +31,9 @@ return(
  <label> Valor inicial: {state.value} </label>
    <button type="button" onClick={() => dispatch({type: 'incrementar'}) } > + 1 </button>  
    <button type="button" onClick={() => dispatch({type: 'decrementar'}) }> - 1 </button>
+   <label> Incrementar valor en : </label>
+
+   <input type="number"/> 
    <button type="button">Click Me!</button>
    </div>
 )
