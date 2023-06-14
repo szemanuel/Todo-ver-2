@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 
 const Counter = () => {
   //Estado inicial del reducer
@@ -17,24 +17,27 @@ const Counter = () => {
         return state;
     }
   };
-
   //El hook useReducer es el que une el estado con el reducer.
   //Al useReducer le puedo mandar un :  I) un reducer II) un estado y III) una función. Se espera que la función le traiga el estado que va a tener la función dsp
 
 
     //El dispatch es el type, es decir, el string que va a decir “incrementar” o “decrementar” por ej.
 const [state, dispatch] = useReducer(countReducer, initialState);
-console.log(state)
+
+const [numero, setNumber] = useState([])
+
+console.log(numero)
+console.log(state.value)
 console.log(dispatch)
+
 return(
   <div>
  <label> Valor inicial: {state.value} </label>
    <button type="button" onClick={() => dispatch({type: 'incrementar'}) } > + 1 </button>  
    <button type="button" onClick={() => dispatch({type: 'decrementar'}) }> - 1 </button>
-   <label> Incrementar valor en : </label>
-
-   <input type="number"/> 
-   <button type="button">Click Me!</button>
+   <label> Incrementar valor en : <input type="number" name="number"
+    onChange={e =>  setNumber(e.target.value)}/> </label>
+   <button type="button" onClick={() => dispatch({type: 'incrementarPor', payload: {numero} }) } >+</button>
    </div>
 )
 }
