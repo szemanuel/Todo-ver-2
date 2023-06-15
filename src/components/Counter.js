@@ -12,7 +12,7 @@ const Counter = () => {
       case 'decrementar':
         return { ...state, value: state.value - 1 };
       case 'incrementarPor':
-        return { ...state, value: state.value + action.payload };
+        return { ...state, value: state.value + action.payload.numero };
       default:
         return state;
     }
@@ -36,7 +36,7 @@ return(
    <button type="button" onClick={() => dispatch({type: 'incrementar'}) } > + 1 </button>  
    <button type="button" onClick={() => dispatch({type: 'decrementar'}) }> - 1 </button>
    <label> Incrementar valor en : <input type="number" name="number"
-    onChange={e =>  setNumber(e.target.value)}/> </label>
+    onChange={e =>  setNumber(e.target.value*1)}/> </label>
    <button type="button" onClick={() => dispatch({type: 'incrementarPor', payload: {numero} }) } >+</button>
    </div>
 )
