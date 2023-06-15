@@ -1,14 +1,10 @@
+import React, { useState, useReducer } from 'react';
 import { configureStore } from '@reduxjs/toolkit'
 
 
 
 const Counter2 = () =>{
 
-
-const store = configureStore({ reducer: counterReducer })
-
-console.log(store.getState())
-// {value: 0}
 
 
 const initialState = { value: 0 }
@@ -26,6 +22,12 @@ function counterReducer(state = initialState, action) {
   // otherwise return the existing state unchanged
   return state
 }
+
+const store = configureStore({ reducer: counterReducer })
+console.log(store.getState())
+// {value: 0}
+
+
 
 return (
   <div>  </div> 

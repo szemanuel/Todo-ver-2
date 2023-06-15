@@ -28,9 +28,9 @@ const [state, dispatch] = useReducer(countReducer, initialState);
 
 const [numero, setNumber] = useState([])
 
-console.log(numero)
-console.log(state.value)
-console.log(dispatch)
+//console.log(numero)
+//console.log(state.value)
+//console.log(dispatch)
 
 return(
   <div>
