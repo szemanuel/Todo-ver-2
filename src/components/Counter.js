@@ -13,6 +13,8 @@ const Counter = () => {
         return { ...state, value: state.value - 1 };
       case 'incrementarPor':
         return { ...state, value: state.value + action.payload.numero };
+        case 'resetear':
+        return { ...state, value: 0 };
       default:
         return state;
     }
@@ -38,6 +40,9 @@ return(
    <label> Incrementar valor en : <input type="number" name="number"
     onChange={e =>  setNumber(e.target.value*1)}/> </label>
    <button type="button" onClick={() => dispatch({type: 'incrementarPor', payload: {numero} }) } >+</button>
+   <button type="button" onClick={() => dispatch({type: 'resetear' }) } >Resetear</button>
+    
+   
    </div>
 )
 }
