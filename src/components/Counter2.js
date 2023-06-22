@@ -6,7 +6,6 @@ import { configureStore } from '@reduxjs/toolkit'
 const Counter2 = () =>{
 
 
-
 const initialState = { value: 0 }
 
 function counterReducer(state = initialState, action) {
