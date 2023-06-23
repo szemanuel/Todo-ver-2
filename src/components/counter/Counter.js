@@ -3,11 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   decrement,
   increment,
-  incrementByAmount,
-  incrementAsync,
   selectCount
 } from './counterSlice'
-import styles from './Counter.module.css'
 
 /* We have a function component called Counter, that stores some data in a useState hook. 
  There is a variable called count, but it's not coming from a useState hook.
@@ -20,26 +17,23 @@ Similarly, we know that if we had access to a Redux store, we could dispatch act
 The useDispatch hook does that for us, and gives us the actual dispatch method from the Redux store
 */
 
-export function Counter() {
+export function Counter3() {
 /*   So, we can get the current store counter value by doing:*/
   const count = useSelector(selectCount)
   const dispatch = useDispatch()
-  const [incrementAmount, setIncrementAmount] = useState('2')
 
   return (
     <div>
-      <div className={styles.row}>
+      <div className="">
         <button
-          className={styles.button}
-          aria-label="Increment value"
+          className=""
           onClick={() => dispatch(increment())}
         >
           +
         </button>
-        <span className={styles.value}>{count}</span>
+        <span className="">{count}</span>
         <button
-          className={styles.button}
-          aria-label="Decrement value"
+          className=""
           onClick={() => dispatch(decrement())}
         >
           -
